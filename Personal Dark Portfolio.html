@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Creative Director & Editor</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Inter & Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#090d16',
+                        darkCard: '#111827',
+                        neonPurple: '#8b5cf6',
+                        neonCyan: '#06b6d4',
+                        neonPink: '#ec4899',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 15px rgba(139, 92, 246, 0.4)' },
+                            '100%': { boxShadow: '0 0 35px rgba(6, 182, 212, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background Grid */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Glowing Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #06b6d4 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+
+        /* Typing cursor */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #06b6d4;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Glowing Border Ring */
+        .animated-border {
+            position: relative;
+            border-radius: 9999px;
+            padding: 4px;
+            background: linear-gradient(90deg, #8b5cf6, #06b6d4, #ec4899, #8b5cf6);
+            background-size: 300% 300%;
+            animation: borderGradient 6s ease infinite;
+        }
+        @keyframes borderGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Smooth tab transition */
+        .tab-btn.active {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            color: white;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-grid-pattern relative">
+
+    <!-- Ambient Glowing Light Orbs in Background -->
+    <div class="fixed top-20 left-10 w-96 h-96 bg-purple-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-20 right-10 w-96 h-96 bg-cyan-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- 1. Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl font-extrabold tracking-wider font-heading gradient-text">
+                PORTFOLIO<span class="text-cyan-400">.</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-cyan-400 transition-colors duration-200 py-1">Home</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors duration-200 py-1">About Me</a>
+                <a href="#services" class="hover:text-cyan-400 transition-colors duration-200 py-1">Services</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition-colors duration-200 py-1">Portfolio</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors duration-200 py-1">Experience</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors duration-200 py-1">Contact</a>
+            </nav>
+
+            <!-- Hire Me CTA Button -->
+            <div class="hidden md:block">
+                <a href="#contact" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white shadow-lg shadow-purple-500/25 hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Let's Talk
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-800 px-6 py-4 space-y-4">
+            <a href="#home" class="block text-gray-300 hover:text-cyan-400 py-1">Home</a>
+            <a href="#about" class="block text-gray-300 hover:text-cyan-400 py-1">About Me</a>
+            <a href="#services" class="block text-gray-300 hover:text-cyan-400 py-1">Services</a>
+            <a href="#portfolio" class="block text-gray-300 hover:text-cyan-400 py-1">Portfolio</a>
+            <a href="#experience" class="block text-gray-300 hover:text-cyan-400 py-1">Experience</a>
+            <a href="#contact" class="block text-gray-300 hover:text-cyan-400 py-1">Contact</a>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="home" class="min-h-screen pt-28 pb-16 flex items-center justify-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Hero Left Text Content -->
+            <div class="space-y-6 text-center lg:text-left z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-purple-500/30 text-xs font-medium text-purple-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    Available for Freelance & Projects
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight font-heading">
+                    Hello, I'm <br>
+                    <span class="gradient-text">Alex Rivera</span>
+                </h1>
+
+                <!-- Typing Animation Dynamic Title -->
+                <div class="text-xl sm:text-2xl font-medium text-gray-300 h-8 flex items-center justify-center lg:justify-start">
+                    <span>I am a&nbsp;</span>
+                    <span id="typing-text" class="text-cyan-400 font-semibold"></span>
+                    <span class="cursor">&nbsp;</span>
+                </div>
+
+                <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    আমি একজন প্রফেশনাল ফটোগ্রাফার, ভিডিও এডিটর এবং ক্রিয়েটিভ ডিরেক্টর। ভিজ্যুয়াল স্টোরিটেলিং এবং ডিজিটাল কনটেন্ট ক্রিয়েশনে আমার দীর্ঘদিনের অভিজ্ঞতা রয়েছে।
+                </p>
+
+                <!-- Action CTA Buttons -->
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+                    <a href="#contact" class="px-7 py-3.5 rounded-full font-semibold text-sm bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white shadow-xl shadow-purple-500/20 hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-1">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Hire Me
+                    </a>
+                    <button onclick="downloadCV()" class="px-7 py-3.5 rounded-full font-semibold text-sm glass text-gray-200 hover:text-cyan-400 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                        <i class="fa-solid fa-download mr-2"></i> Download CV
+                    </button>
+                </div>
+
+                <!-- Quick Social Links -->
+                <div class="pt-6 flex items-center justify-center lg:justify-start gap-5 text-gray-400">
+                    <span class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Follow Me:</span>
+                    <a href="#" class="hover:text-purple-400 text-lg transition-transform hover:scale-125"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-pink-400 text-lg transition-transform hover:scale-125"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-cyan-400 text-lg transition-transform hover:scale-125"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-red-500 text-lg transition-transform hover:scale-125"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Hero Right Animated Avatar Image -->
+            <div class="flex justify-center z-10">
+                <div class="relative animate-float">
+                    <!-- Glow Aura -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                    
+                    <div class="animated-border w-72 h-72 sm:w-96 sm:h-96 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                             alt="Profile Portrait" 
+                             class="w-full h-full object-cover rounded-full filter grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. About Me Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">
+                    <span class="gradient-text">About Me</span> & My Passion
+                </h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Dual Style Photo Showcase (Professional vs Casual Toggle) -->
+                <div class="glass p-6 rounded-3xl space-y-6">
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                        <h3 class="text-lg font-semibold text-gray-200">Visual Gallery Style</h3>
+                        <div class="flex space-x-2">
+                            <button id="btnProPhoto" onclick="switchPhoto('pro')" class="tab-btn active px-4 py-1.5 rounded-full text-xs font-semibold">Professional</button>
+                            <button id="btnCasualPhoto" onclick="switchPhoto('casual')" class="tab-btn bg-gray-800 text-gray-400 hover:text-white px-4 py-1.5 rounded-full text-xs font-semibold">Casual / Lifestyle</button>
+                        </div>
+                    </div>
+
+                    <!-- Photo Container -->
+                    <div class="relative h-80 rounded-2xl overflow-hidden group">
+                        <img id="displayPhoto" 
+                             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                             alt="Style Photo" 
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div id="photoLabel" class="absolute bottom-4 left-4 glass px-4 py-2 rounded-xl text-xs font-medium text-cyan-300">
+                            Pro Studio Setup
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio & Animated Skills -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-gray-100">আমি কে এবং আমার কাজ কী?</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        আমি একজন ক্রিয়েটিভ প্রফেশনাল। বিভিন্ন ইভেন্ট ফটোগ্রাফি, সিনেমাটিক ভিডিও এডিটিং, এবং কমার্শিয়াল ব্র্যান্ড ভিডিও নিয়ে দীর্ঘ ৫ বছর ধরে কাজ করছি। টেকনোলজি এবং ভিজ্যুয়াল আর্টের মেলবন্ধন ঘটিয়ে ইউনিক কনটেন্ট তৈরি করা আমার প্রধান লক্ষ্য।
+                    </p>
+
+                    <!-- Animated Progress Skills Bar -->
+                    <div class="space-y-4 pt-4">
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span class="text-gray-300">Video Editing (Premiere Pro & DaVinci)</span>
+                                <span class="text-purple-400 font-bold">92%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full w-[92%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span class="text-gray-300">Photography & Retouching (Lightroom/Photoshop)</span>
+                                <span class="text-cyan-400 font-bold">88%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-cyan-500 to-teal-400 rounded-full w-[88%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span class="text-gray-300">Cinematography & Color Grading</span>
+                                <span class="text-pink-400 font-bold">85%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-pink-500 to-rose-400 rounded-full w-[85%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Services Section -->
+    <section id="services" class="py-20 relative bg-gray-950/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">
+                    My <span class="gradient-text">Services</span>
+                </h2>
+                <p class="text-gray-400 mt-2">আমি যেসব সার্ভিস প্রফেশনাল মানের সাথে প্রদান করে থাকি</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass p-8 rounded-3xl border border-gray-800 hover:border-purple-500/50 transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition duration-300">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-100">Photography</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        প্রোর্ট্রেট, ইভেন্ট, প্রোডাক্ট এবং কমার্শিয়াল হাই-রেজুলেশন ফটোগ্রাফি সার্ভিস।
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass p-8 rounded-3xl border border-gray-800 hover:border-cyan-500/50 transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-white transition duration-300">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-100">Video Editing</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        ইউটিউব ভিডিও, রিলস/শর্টস, বিজ্ঞাপন এবং সিনেমাটিক কালার গ্রেডিং এডিটিং।
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass p-8 rounded-3xl border border-gray-800 hover:border-pink-500/50 transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 flex items-center justify-center text-pink-400 text-2xl mb-6 group-hover:bg-pink-500 group-hover:text-white transition duration-300">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-100">Creative Direction</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        ভিজ্যুয়াল কনসেপ্ট প্ল্যানিং, ব্র্যান্ডিং এবং ক্রিয়েটিভ প্রজেক্ট ম্যানেজমেন্ট।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Portfolio Showcase Section -->
+    <section id="portfolio" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">
+                    Featured <span class="gradient-text">Portfolio</span>
+                </h2>
+                <p class="text-gray-400 mt-2">আমার সাম্প্রতিক সম্পূর্ণ করা কিছু কাজ</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterPortfolio('all')" class="filter-btn active-filter px-5 py-2 rounded-full text-xs font-semibold glass text-cyan-400 border-cyan-500/40">All Works</button>
+                <button onclick="filterPortfolio('photo')" class="filter-btn px-5 py-2 rounded-full text-xs font-semibold glass text-gray-400 hover:text-white">Photography</button>
+                <button onclick="filterPortfolio('video')" class="filter-btn px-5 py-2 rounded-full text-xs font-semibold glass text-gray-400 hover:text-white">Videography & Editing</button>
+                <button onclick="filterPortfolio('projects')" class="filter-btn px-5 py-2 rounded-full text-xs font-semibold glass text-gray-400 hover:text-white">Completed Jobs</button>
+            </div>
+
+            <!-- Portfolio Items Grid -->
+            <div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Item 1: Photo -->
+                <div class="portfolio-item photo glass rounded-3xl overflow-hidden group border border-gray-800 hover:border-purple-500/50 transition duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="Camera Shoot" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex items-end p-6">
+                            <div>
+                                <span class="text-xs text-cyan-400 font-semibold uppercase">Photography</span>
+                                <h4 class="text-lg font-bold text-white">Urban Studio Portrait</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Video Preview -->
+                <div class="portfolio-item video glass rounded-3xl overflow-hidden group border border-gray-800 hover:border-cyan-500/50 transition duration-300">
+                    <div class="relative h-64 overflow-hidden cursor-pointer" onclick="openModal('Cinematic Travel Vlog', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Video Editing" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-cyan-500/80 text-white flex items-center justify-center text-xl shadow-lg shadow-cyan-500/50 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex items-end p-6">
+                            <div>
+                                <span class="text-xs text-purple-400 font-semibold uppercase">Videography & Editing</span>
+                                <h4 class="text-lg font-bold text-white">Cinematic Commercial Edit</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Project -->
+                <div class="portfolio-item projects glass rounded-3xl overflow-hidden group border border-gray-800 hover:border-pink-500/50 transition duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Nature Project" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex items-end p-6">
+                            <div>
+                                <span class="text-xs text-pink-400 font-semibold uppercase">Completed Job</span>
+                                <h4 class="text-lg font-bold text-white">Brand Campaign Shoot</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Photo -->
+                <div class="portfolio-item photo glass rounded-3xl overflow-hidden group border border-gray-800 hover:border-purple-500/50 transition duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80" alt="Landscape" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex items-end p-6">
+                            <div>
+                                <span class="text-xs text-cyan-400 font-semibold uppercase">Photography</span>
+                                <h4 class="text-lg font-bold text-white">Nature & Landscape</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Video -->
+                <div class="portfolio-item video glass rounded-3xl overflow-hidden group border border-gray-800 hover:border-cyan-500/50 transition duration-300">
+                    <div class="relative h-64 overflow-hidden cursor-pointer" onclick="openModal('Music Video Edit', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80" alt="Music Video" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-purple-600/80 text-white flex items-center justify-center text-xl shadow-lg shadow-purple-500/50 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex items-end p-6">
+                            <div>
+                                <span class="text-xs text-purple-400 font-semibold uppercase">Videography & Editing</span>
+                                <h4 class="text-lg font-bold text-white">Music Video Color Grading</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Project -->
+                <div class="portfolio-item projects glass rounded-3xl overflow-hidden group border border-gray-800 hover:border-pink-500/50 transition duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Event Project" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex items-end p-6">
+                            <div>
+                                <span class="text-xs text-pink-400 font-semibold uppercase">Completed Job</span>
+                                <h4 class="text-lg font-bold text-white">Corporate Tech Event Coverage</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Experience & CV Section -->
+    <section id="experience" class="py-20 relative bg-gray-950/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">
+                    Experience & <span class="gradient-text">CV</span>
+                </h2>
+                <p class="text-gray-400 mt-2">আমার কাজের ইতিহাস এবং অভিজ্ঞতা তালিকা</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Experience Timeline -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-briefcase text-cyan-400"></i> Work Timeline
+                    </h3>
+
+                    <div class="relative border-l-2 border-gray-800 ml-4 space-y-8">
+                        <!-- Timeline Item 1 -->
+                        <div class="relative pl-8">
+                            <span class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-cyan-500 border-4 border-gray-950"></span>
+                            <span class="text-xs font-semibold text-cyan-400 uppercase tracking-widest">2022 - Present</span>
+                            <h4 class="text-xl font-bold text-white mt-1">Lead Video Editor</h4>
+                            <p class="text-sm text-gray-400">Creative Media Agency</p>
+                            <p class="text-gray-400 text-sm mt-2">
+                                কমার্শিয়াল প্রজেক্টের ভিডিও এডিটিং, মোশন গ্রাফিক্স ও টিম লিড প্রদান।
+                            </p>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="relative pl-8">
+                            <span class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-purple-500 border-4 border-gray-950"></span>
+                            <span class="text-xs font-semibold text-purple-400 uppercase tracking-widest">2020 - 2022</span>
+                            <h4 class="text-xl font-bold text-white mt-1">Senior Photographer</h4>
+                            <p class="text-sm text-gray-400">Studio Vision</p>
+                            <p class="text-gray-400 text-sm mt-2">
+                                মডেল শুটিং, প্রোডাক্ট ফটোগ্রাফি এবং লাইটরুমের রিটাচিং ওয়ার্কফ্লো পরিচালনা।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live CV Preview Card -->
+                <div class="glass p-8 rounded-3xl border border-gray-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-bold text-white">Curriculum Vitae</h3>
+                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            আপনি চাইলে সরাসরি আমার সম্পূর্ণ প্রফেশনাল বায়োডাটা / সিভি ডাউনলোড করতে পারেন বা অনলাইনে প্রিভিউ করতে পারেন।
+                        </p>
+
+                        <!-- Mock CV Highlight Container -->
+                        <div class="bg-gray-900/80 p-5 rounded-2xl border border-gray-800 space-y-3 mb-6">
+                            <div class="flex justify-between text-xs text-gray-400">
+                                <span>Name: Alex Rivera</span>
+                                <span>Experience: 5+ Years</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-400">
+                                <span>Location: Dhaka, Bangladesh</span>
+                                <span>Status: Available</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="downloadCV()" class="w-full py-3.5 rounded-2xl font-bold text-sm bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white shadow-lg shadow-purple-500/25 transition duration-300">
+                        <i class="fa-solid fa-file-arrow-down mr-2"></i> Download Full Resume (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Contact & Social Links Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">
+                    Get In <span class="gradient-text">Touch</span>
+                </h2>
+                <p class="text-gray-400 mt-2">যেকোনো প্রজেক্ট বা ফ্রিল্যান্স কাজের জন্য মেসেজ পাঠান</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Direct Contact Info -->
+                <div class="space-y-8">
+                    <div class="glass p-6 rounded-2xl flex items-center space-x-5 border border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block uppercase">Email Me</span>
+                            <a href="mailto:alex@example.com" class="text-white font-semibold hover:text-cyan-400">alex.rivera@example.com</a>
+                        </div>
+                    </div>
+
+                    <div class="glass p-6 rounded-2xl flex items-center space-x-5 border border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block uppercase">Call / WhatsApp</span>
+                            <a href="tel:+8801700000000" class="text-white font-semibold hover:text-cyan-400">+880 1700-000000</a>
+                        </div>
+                    </div>
+
+                    <!-- All Social Icon Badges -->
+                    <div class="glass p-6 rounded-2xl border border-gray-800">
+                        <span class="text-xs text-gray-400 block uppercase mb-4">Connect Social Media</span>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-purple-600 text-white flex items-center justify-center transition duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-pink-600 text-white flex items-center justify-center transition duration-300"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-cyan-600 text-white flex items-center justify-center transition duration-300"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-red-600 text-white flex items-center justify-center transition duration-300"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-gray-700 text-white flex items-center justify-center transition duration-300"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-blue-500 text-white flex items-center justify-center transition duration-300"><i class="fa-brands fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="glass p-8 rounded-3xl space-y-6 border border-gray-800">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Your Name</label>
+                        <input type="text" required class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-800 text-white focus:outline-none focus:border-cyan-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Your Email</label>
+                        <input type="email" required class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-800 text-white focus:outline-none focus:border-cyan-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Message</label>
+                        <textarea rows="4" required class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-800 text-white focus:outline-none focus:border-cyan-500 transition"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white shadow-xl shadow-cyan-500/20 transition duration-300">
+                        Send Message
+                    </button>
+                    <p id="formMsg" class="hidden text-center text-xs text-emerald-400 font-semibold mt-2">
+                        ✓ আপনার মেসেজটি সফলভাবে পাঠানো হয়েছে!
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 glass border-t border-gray-900 text-center text-xs text-gray-500">
+        <p>© 2026 Alex Rivera. All rights reserved. Designed with Neon Dark Theme.</p>
+    </footer>
+
+    <!-- Video Modal Lightbox -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass max-w-3xl w-full rounded-3xl overflow-hidden relative border border-gray-700">
+            <div class="p-4 flex justify-between items-center border-b border-gray-800">
+                <h3 id="modalTitle" class="font-bold text-white">Video Preview</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="aspect-video w-full">
+                <iframe id="modalIframe" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Typing Effect Animation
+        const titles = ["Photographer", "Video Editor", "Creative Director", "Cinematographer"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === titles.length) {
+                count = 0;
+            }
+            currentText = titles[count];
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById("typing-text").textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 120);
+            }
+        })();
+
+        // 3. Photo Style Switcher (Pro vs Casual)
+        function switchPhoto(style) {
+            const displayPhoto = document.getElementById('displayPhoto');
+            const photoLabel = document.getElementById('photoLabel');
+            const btnPro = document.getElementById('btnProPhoto');
+            const btnCasual = document.getElementById('btnCasualPhoto');
+
+            if (style === 'pro') {
+                displayPhoto.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';
+                photoLabel.textContent = 'Pro Studio Setup';
+                btnPro.classList.add('active');
+                btnCasual.classList.remove('active');
+                btnCasual.classList.add('bg-gray-800', 'text-gray-400');
+            } else {
+                displayPhoto.src = 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80';
+                photoLabel.textContent = 'Casual / Lifestyle Style';
+                btnCasual.classList.add('active');
+                btnPro.classList.remove('active');
+                btnPro.classList.add('bg-gray-800', 'text-gray-400');
+            }
+        }
+
+        // 4. Portfolio Category Filtering
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // 5. Video Lightbox Modal logic
+        function openModal(title, videoUrl) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalIframe').src = videoUrl;
+            document.getElementById('videoModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modalIframe').src = '';
+            document.getElementById('videoModal').classList.add('hidden');
+        }
+
+        // 6. Contact Form Logic
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('formMsg');
+            msg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 4000);
+        }
+
+        // 7. CV Download Trigger
+        function downloadCV() {
+            alert('আপনার সিভি ডাউনলোড করা শুরু হচ্ছে...');
+        }
+    </script>
+</body>
+</html>
